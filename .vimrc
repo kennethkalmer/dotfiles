@@ -70,3 +70,7 @@ set background=light
 colorscheme solarized
 
 filetype plugin indent on
+
+" Bufexplorer remapping
+nnoremap <silent> <C-Tab> :BufExplorer<CR>
+
