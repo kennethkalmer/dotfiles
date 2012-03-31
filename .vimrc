@@ -1,3 +1,9 @@
+" Let pathogen do the work for us
 call pathogen#infect()
-syntax on
+
+" solarized
+syntax enable
+set background=light
+colorscheme solarized
+
 filetype plugin indent on
