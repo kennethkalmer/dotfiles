@@ -74,3 +74,19 @@ filetype plugin indent on
 " Bufexplorer remapping
 nnoremap <silent> <C-Tab> :BufExplorer<CR>
 
+" Nuke trailing whitespace
+function! <SID>StripTrailingWhitespaces()
+  " Preparation: save last search, and cursor position.
+  let _s=@/
+  let l = line(".")
+  let c = col(".")
+  " Do the business:
+  %s/\s\+$//e
+  " Clean up: restore previous search history, and cursor position
+  let @/=_s
+  call cursor(l, c)
+endfunction
+
+nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
+autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+autocmd FileType ruby autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
