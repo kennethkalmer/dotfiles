@@ -90,3 +90,6 @@ endfunction
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
 autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
 autocmd FileType ruby autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
+" Hide the toolbar
+set go-=T
