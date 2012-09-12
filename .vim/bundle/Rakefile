@@ -1,0 +1,17 @@
+require 'rake'
+
+namespace :bundles do
+  desc "Run `git pull` in each bundle"
+  task :update do
+    Dir["*"].each do |bundle|
+      if File.directory?( bundle ) && File.directory?( "#{bundle}/.git" )
+        puts "Updating #{bundle}"
+        Dir.chdir bundle do
+          puts `git pull`
+          puts
+          puts
+        end
+      end
+    end
+  end
+end
