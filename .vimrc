@@ -12,6 +12,14 @@ set shiftwidth=2                  " an autoindent (with <<) is two spaces
 set expandtab                     " use spaces, not tabs
 set list                          " Show invisible characters
 set backspace=indent,eol,start    " backspace through everything in insert mode
+set shiftround                    " use multples of shiftwidth when indenting with '<' and '>'
+
+set title                " change the terminal's title
+set visualbell           " don't beep
+set noerrorbells         " don't beep
+
+" change the mapleader from '\' to ','
+let mapleader=","
 
 if exists("g:enable_mvim_shift_arrow")
   let macvim_hig_shift_movement = 1 " mvim shift-arrow-keys
@@ -71,9 +79,7 @@ colorscheme solarized
 
 filetype plugin indent on
 
-" Bufexplorer remapping
-nnoremap <silent> <C-Tab> :BufExplorer<CR>
-
+"
 " Nuke trailing whitespace
 function! <SID>StripTrailingWhitespaces()
   " Preparation: save last search, and cursor position.
@@ -88,8 +94,28 @@ function! <SID>StripTrailingWhitespaces()
 endfunction
 
 nnoremap <silent> <F5> :call <SID>StripTrailingWhitespaces()<CR>
-autocmd BufWritePre *.py,*.js :call <SID>StripTrailingWhitespaces()
+autocmd BufWritePre *.py,*.js,*.haml,*.coffee,*.coffee.erb,*.sass,*.css,*.scss :call <SID>StripTrailingWhitespaces()
 autocmd FileType ruby autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
 
 " Hide the toolbar
 set go-=T
+
+" Learn to move around like a boss
+map <up> <nop>
+map <down> <nop>
+map <left> <nop>
+map <right> <nop>
+
+" scrolling over wrapped lines behaves like normal editors
+nnoremap j gj
+nnoremap k gk
+
+" clear the search easily, maintain history
+nmap <silent> ,/ :nohlsearch<CR>
+
+" toggle nerdtree
+nmap <silent> <leader>n :NERDTreeToggle<CR>
+
+" Bufexplorer remapping
+nnoremap <silent> <leader>b :BufExplorer<CR>
+
