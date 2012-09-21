@@ -62,6 +62,9 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 " Disable temp and backup files
 set wildignore+=*.swp,*~,._*
 
+" Disable per-project tmp directory
+set wildignore+=*/tmp/*
+
 ""
 "" Backup and swap files
 ""
@@ -101,10 +104,10 @@ autocmd FileType ruby autocmd BufWritePre <buffer> :call <SID>StripTrailingWhite
 set go-=T
 
 " Learn to move around like a boss
-map <up> <nop>
-map <down> <nop>
-map <left> <nop>
-map <right> <nop>
+"map <up> <nop>
+"map <down> <nop>
+"map <left> <nop>
+"map <right> <nop>
 
 " scrolling over wrapped lines behaves like normal editors
 nnoremap j gj
