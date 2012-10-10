@@ -4,3 +4,5 @@ html=.haml
 css=.sass,.scss
 --type-set
 coffee=.coffee
+--type-set
+json=.json,.rabl
