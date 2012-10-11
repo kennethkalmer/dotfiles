@@ -4,5 +4,9 @@ html=.haml
 css=.sass,.scss
 --type-set
 coffee=.coffee
+--type-add
+js=.coffee
 --type-set
 json=.json,.rabl
+--type-set
+feature=.feature
