@@ -122,3 +122,5 @@ nmap <silent> <leader>n :NERDTreeToggle<CR>
 " Bufexplorer remapping
 nnoremap <silent> <leader>b :BufExplorer<CR>
 
+" A snappier gitgutter
+"let g:gitgutter_eager = 0
