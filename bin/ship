@@ -1,0 +1,24 @@
+#!/bin/zsh
+#
+# Deployment wrappers for capistrano
+#
+
+set -e
+
+# Environemnt
+environment=${1:-staging}
+
+# Current branch
+ref=$(git symbolic-ref HEAD)
+branch=${ref#refs/heads/}
+
+# Feedback
+#set -x
+
+# Send to origin
+echo "Pushing $branch to origin/$branch"
+git push origin $branch -u
+
+# And go
+echo "Deploying $branch to $environment"
+cap $environment deploy:migrations BRANCH="$branch"
