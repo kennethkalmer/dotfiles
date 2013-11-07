@@ -10,3 +10,5 @@ js=.coffee
 json=.json,.rabl
 --type-set
 feature=.feature
+--type-set
+md=.md,markdown,mdown
