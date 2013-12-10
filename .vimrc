@@ -145,3 +145,10 @@ nnoremap <D-7> 7gt
 nnoremap <D-8> 8gt
 nnoremap <D-9> 9gt
 
+" Some Linux distributions set filetype in /etc/vimrc.
+" Clear filetype flags before changing runtimepath to force Vim to reload them.
+filetype off
+filetype plugin indent off
+set runtimepath+=$GOROOT/misc/vim
+filetype plugin indent on
+syntax on

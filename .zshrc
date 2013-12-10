@@ -22,7 +22,7 @@ export ZSH_THEME="kenneth"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew rbenv git bundler knife osx heroku)
+plugins=(brew rbenv git knife osx heroku)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -46,3 +46,6 @@ export LC_CTYPE=en_US.UTF-8
 
 # What else?
 export EDITOR=vim
+
+# Load our own customizations
+source $HOME/.zsh/index.sh
