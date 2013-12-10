@@ -1,6 +1,6 @@
 #!/bin/zsh
 #
-# Deployment wrappers for capistrano
+# Ease deployment
 #
 
 set -e
@@ -17,8 +17,25 @@ branch=${ref#refs/heads/}
 
 # Send to origin
 echo "Pushing $branch to origin/$branch"
-git push origin $branch -u
+git push origin $branch
 
-# And go
-echo "Deploying $branch to $environment"
-cap $environment deploy:migrations BRANCH="$branch"
+# Deploy via capistrano?
+if [[ -r Capfile ]]; then
+
+  echo "Deploying $branch to $environment with capistrano"
+  cap $environment deploy:migrations BRANCH="$branch"
+  exit 0
+
+fi
+
+# Git remote?
+remote=$(git remote -v | grep $environment | awk '{print $2}')
+if [[ ! -z $remote ]]; then
+
+  echo "Deploying $branch to $remote"
+  git push $environment $branch
+  exit 0
+fi
+
+echo "Not sure how you want me to ship this"
+exit 1
