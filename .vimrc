@@ -63,7 +63,7 @@ set wildignore+=*/vendor/gems/*,*/vendor/cache/*,*/.bundle/*,*/.sass-cache/*
 set wildignore+=*.swp,*~,._*
 
 " Disable per-project tmp directory
-set wildignore+=*/tmp/*
+"set wildignore+=*/tmp/*
 
 ""
 "" Backup and swap files
@@ -113,6 +113,12 @@ set go-=T
 nnoremap j gj
 nnoremap k gk
 
+" yes, I meant :q or :w
+command! Q q
+command! Qall qall
+command! W w
+command! Wa wall
+
 " clear the search easily, maintain history
 nmap <silent> ,/ :nohlsearch<CR>
 
@@ -122,5 +128,20 @@ nmap <silent> <leader>n :NERDTreeToggle<CR>
 " Bufexplorer remapping
 nnoremap <silent> <leader>b :BufExplorer<CR>
 
+" Copy to system clipboard
+set clipboard=unnamed
+
 " A snappier gitgutter
 "let g:gitgutter_eager = 0
+
+" Map Apple-1, Apple-2 and such to behave like other tabbed apps
+nnoremap <D-1> 1gt
+nnoremap <D-2> 2gt
+nnoremap <D-3> 3gt
+nnoremap <D-4> 4gt
+nnoremap <D-5> 5gt
+nnoremap <D-6> 6gt
+nnoremap <D-7> 7gt
+nnoremap <D-8> 8gt
+nnoremap <D-9> 9gt
+
