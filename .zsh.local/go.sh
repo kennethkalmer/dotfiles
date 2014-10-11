@@ -5,4 +5,4 @@ export GOPATH=/Users/kenneth/Code/go
 export GOROOT=$(brew --prefix go)/libexec
 
 # Append the gopath bin to our own PATH
-export PATH=$PATH:$GOPATH/bin
+export PATH=$PATH:$GOPATH/bin:$GOROOT/bin

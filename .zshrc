@@ -52,4 +52,4 @@ export LC_CTYPE=en_US.UTF-8
 export EDITOR=vim
 
 # Load our own customizations
-source $HOME/.zsh/index.sh
+source $HOME/.zsh.local/index.sh
