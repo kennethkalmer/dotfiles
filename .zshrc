@@ -22,13 +22,17 @@ export ZSH_THEME="kenneth"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(brew rbenv git knife osx heroku)
+#plugins=(brew rbenv git knife osx heroku)
+plugins=(brew rbenv git osx)
 
+# Have homebrew in the PATH before loading oh-my-zsh
+export PATH=/usr/local/bin:/usr/local/sbin:$PATH
+
+# Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# Custom path
-export PATH=/usr/local/bin:/usr/local/sbin:$PATH
-export PATH=$HOME/bin:$(npm bin):$(npm bin -g):$PATH
+# npm path adjustments
+export PATH=$HOME/bin:$(npm bin):$(npm bin -g 2> /dev/null):$PATH
 
 # Disable autocorrect on per-command basis
 #alias knife='nocorrect knife'
