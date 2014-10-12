@@ -181,6 +181,15 @@ endif
 " Removing current search highlight
 map <leader>. :noh<cr>
 
+" Toggle nerd tree
+map <leader>n :NERDTreeTabsToggle<cr>
+" " Toggle tagbar
+map <leader>b :TagbarToggle<cr>
+" " Close current buffer
+map <leader>bd :bd!<cr>
+" " Close all open buffers
+map <leader>ba :1,1000 bd!<cr>
+
 " j and k navigate through wrapped lines
 nmap k gk
 nmap j gj
@@ -196,3 +205,51 @@ map <leader>vr :so ~/.vimrc<cr>
 map <leader>ve :e ~/.vimrc<cr>
 map <leader>te :e ~/.tmux.conf<cr>
 map <leader>ze :e ~/.zshrc<cr>
+
+" Conventient mapping of :Q to :q for mistakes while trying to quit
+command! Q q
+command! Qall qall
+command! W w
+command! Wa wall
+
+""""""""""""""""""""""""""""""""""""""""""
+" AUTOCMD
+""""""""""""""""""""""""""""""""""""""""""
+if has("autocmd")
+  " Autoindent with two spaces, always expand tabs
+  " These are abbreviations for tabstop, shiftwidth, softtabstop
+  autocmd BufNewFile,BufReadPost * set ai ts=2 sw=2 sts=2 et
+
+  " Check for external file changes
+  autocmd CursorHold,CursorMoved,BufEnter * checktime
+
+  " Close vim if nerdtree is the last window left open
+   autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+  " Source .vimrc when saving .vimrc
+  autocmd BufWritePost .vimrc source $MYVIMRC
+  " Also load indent files, to automatically do language-dependent indenting.
+
+  " Put these in an autocmd group, so that we can delete them easily.
+  augroup vimrcEx
+  au!
+
+  " For all text files set 'textwidth' to 78 characters.
+  autocmd FileType text setlocal textwidth=78
+
+  " Never wrap slim files
+  autocmd FileType slim setlocal textwidth=0
+
+  " Remove trailing whitespaces on save
+  autocmd BufWritePre * :%s/\s\+$//e
+
+  " When editing a file, always jump to the last known cursor position.
+  " Don't do it when the position is invalid or when inside an event handler
+  " (happens when dropping a file on gvim).
+  autocmd BufReadPost *
+    \ if line("'\"") > 0 && line("'\"") <= line("$") |
+    \   exe "normal g`\"" |
+    \ endif
+
+  augroup END
+endif
