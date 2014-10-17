@@ -1,0 +1,107 @@
+##############################################################################
+# BASIC CONFIG
+##############################################################################
+# System defaults & clipboard support
+set -g default-command /usr/local/bin/zsh
+set -g default-shell /usr/local/bin/zsh
+set -g history-limit 50000
+# set-option -g default-command "reattach-to-user-namespace -l zsh"
+bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
+bind C-v run "tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux paste-buffer"
+
+# Some humane convenience
+set -g prefix C-a         # Setting the prefix from C-b to C-a
+unbind C-b                # Free the original Ctrl-b prefix keybinding
+set -s escape-time 1      # Setting the delay between prefix and command
+bind C-a send-prefix      # Ensure that we can send Ctrl-A to other apps
+#bind C-a last-window
+
+# Ooh pretty
+set -g default-terminal "screen-256color" # Set the default terminal mode to 256color mode
+#source-file ~/.dotfiles/tmux/tmux-solarized-light  # Set colorscheme from file
+source-file ~/.dotfiles/tmux/tmux-solarized-dark
+
+# Reload the file with Prefix r
+bind r source-file ~/.tmux.conf \; display "Reloaded!"
+
+# Mouse support
+setw -g mode-mouse on
+set -g mouse-select-pane on
+set -g mouse-resize-pane on
+set -g mouse-select-window on
+
+# Enable vi keys, duhh
+setw -g mode-keys vi
+
+# Enable activity monitoring & alerts for other windows
+setw -g monitor-activity on
+set -g visual-activity on
+
+# Shorten command delay
+set -sg escape-time 1
+
+
+##############################################################################
+# WINDOW & PANE MANAGEMENT
+##############################################################################
+
+# Quick window selection
+bind -r C-h select-window -t :-
+bind -r C-l select-window -t :+
+
+# Splitting panes
+bind | split-window -h
+bind - split-window -v
+bind _ split-window -v
+
+# Pane resizing
+bind -r H resize-pane -L 5
+bind -r J resize-pane -D 5
+bind -r K resize-pane -U 5
+bind -r L resize-pane -R 5
+
+# Moving between panes
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# Smart pane switching with awareness of vim splits & terminal multiplexer (tmate/tmux)
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-h run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-h) || tmate select-pane -L\"" \
+  "bind -n C-h run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-h) || tmux select-pane -L\""
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-j run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-j) || tmate select-pane -D\"" \
+  "bind -n C-j run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-j) || tmux select-pane -D\""
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-k run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-k) || tmate select-pane -U\"" \
+  "bind -n C-k run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-k) || tmux select-pane -U\""
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-l run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-l) || tmate select-pane -R\"" \
+  "bind -n C-l run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-l) || tmux select-pane -R\""
+if-shell '`echo $TMUX | grep -q tmate`' \
+  "bind -n C-\\ run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys 'C-\\\\') || tmate select-pane -l\"" \
+  "bind -n C-\\ run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys 'C-\\\\') || tmux select-pane -l\""
+
+
+##############################################################################
+# STATUS BAR CONFIG
+##############################################################################
+
+# General status bar config
+set -g status-keys vi
+set -g status-utf8 on                 # Enable utf-8 for special chars
+set -g status-interval 60             # Update the status bar every minute
+
+### Center of status bar
+set -g status-justify centre          # Center the window list
+set-window-option -g window-status-current-format "#[fg=black, bg=brightblue]⮀#[fg=white, bg=brightblue] #I ⮁ #W #[fg=brightblue, bg=black]⮀"
+
+### Left of status bar
+set -g status-left-length 50
+set -g status-left  '#[fg=brightblue,bold]#[bg=black] #12H#[fg=white]  ⮁  #[fg=brightblue,bold]#S : #I : #P#[default]#[fg=white,bold]#[bg=black]             '
+
+### Right of status bar
+set -g status-right-length 50
+set -g status-right '#[fg=brightblue,bold]#(/usr/bin/battery -t)#[fg=white]  ⮃  #[fg=brightblue,bold]#(weather)#[fg=white]  ⮃  #[fg=brightblue,bold]%d %b, #[fg=brightblue]%H:%M#[default] '
+
