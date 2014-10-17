@@ -59,6 +59,8 @@ Plugin 'majutsushi/tagbar'
 Plugin 'airblade/vim-gitgutter'
 " Align stuff
 Plugin 'godlygeek/tabular'
+" Handlebars & movember
+Plugin 'mustache/vim-mustache-handlebars'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
