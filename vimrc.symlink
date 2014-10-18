@@ -61,6 +61,10 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular'
 " Handlebars & movember
 Plugin 'mustache/vim-mustache-handlebars'
+" Haskell
+Plugin 'bflyblue/ghcmod-vim'
+Plugin 'raichoo/haskell-vim'
+Plugin 'Shougo/vimproc'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
