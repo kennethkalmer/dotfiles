@@ -35,7 +35,9 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # npm path adjustments
-export PATH=$HOME/bin:$(npm bin -q):$(npm bin -g -q 2> /dev/null):$PATH
+if (( $+commands[npm] )) ; then
+  export PATH=$HOME/bin:$(npm bin -q):$(npm bin -g -q 2> /dev/null):$PATH
+fi
 
 # Disable autocorrect on per-command basis
 #alias knife='nocorrect knife'
