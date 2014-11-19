@@ -61,6 +61,8 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'godlygeek/tabular'
 " Handlebars & movember
 Plugin 'mustache/vim-mustache-handlebars'
+" Emblem
+Plugin 'heartsentwined/vim-emblem'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -241,6 +243,9 @@ if has("autocmd")
 
   " Never wrap slim files
   autocmd FileType slim setlocal textwidth=0
+
+  " Highlight emblem files with different extensions
+  autocmd BufNewFile,BufRead *.embl set filetype=emblem
 
   " Remove trailing whitespaces on save
   autocmd BufWritePre * :%s/\s\+$//e
