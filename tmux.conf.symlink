@@ -40,6 +40,10 @@ set -g visual-activity on
 # Shorten command delay
 set -sg escape-time 1
 
+# Start number things from 1
+set -g base-index 1
+set-window-option -g pane-base-index 1
+
 
 ##############################################################################
 # WINDOW & PANE MANAGEMENT
