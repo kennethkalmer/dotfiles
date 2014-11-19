@@ -54,6 +54,9 @@ export LC_CTYPE=en_US.UTF-8
 # What else?
 export EDITOR=vim
 
+# Much needed
+alias fuck='sudo $(fc -ln -1)'
+
 # Load our own customizations, basically copied from the brilliant work done in holman/dotfiles
 
 typeset -U config_files
