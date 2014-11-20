@@ -161,7 +161,7 @@ set backspace=indent,eol,start
 " Enable default clipboard to system clipboard
 set clipboard=unnamed
 " (Hopefully) removes the delay when hitting esc in insert mode
-set noesckeys
+" set noesckeys  " having this cause directional keys to break in insert mode
 set ttimeout
 set ttimeoutlen=1
 " Highlight matching braces
