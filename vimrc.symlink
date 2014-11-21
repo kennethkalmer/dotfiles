@@ -67,6 +67,8 @@ Plugin 'heartsentwined/vim-emblem'
 Plugin 'bflyblue/ghcmod-vim'
 Plugin 'raichoo/haskell-vim'
 Plugin 'Shougo/vimproc'
+" Reactjs
+Plugin 'mxw/vim-jsx'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
