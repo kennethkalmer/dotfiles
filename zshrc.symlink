@@ -26,7 +26,7 @@ export ZSH_THEME="kenneth"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Example format: plugins=(rails git textmate ruby lighthouse)
 #plugins=(brew rbenv git knife osx heroku)
-plugins=(brew rbenv git osx)
+plugins=(brew rbenv nvm ember-cli git osx)
 
 # Have homebrew in the PATH before loading oh-my-zsh
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
@@ -34,10 +34,6 @@ export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 # Load oh-my-zsh
 source $ZSH/oh-my-zsh.sh
 
-# npm path adjustments
-if (( $+commands[npm] )) ; then
-  export PATH=$HOME/bin:$(npm bin -q):$(npm bin -g -q 2> /dev/null):$PATH
-fi
 
 # Disable autocorrect on per-command basis
 alias fuu='rspec --format Fuubar'
