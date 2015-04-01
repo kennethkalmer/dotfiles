@@ -71,6 +71,8 @@ Plugin 'Shougo/vimproc'
 Plugin 'mxw/vim-jsx'
 " Copy as RTF
 Plugin 'zerowidth/vim-copy-as-rtf'
+" HTML LIKE A BOSS
+Plugin 'mattn/emmet-vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -272,3 +274,13 @@ if has("autocmd")
 
   augroup END
 endif
+
+"""""""""""
+" Emmet.vim
+"""""""""""
+
+let g:user_emmet_settings = {
+      \  'hbs' : {
+      \    'extends' : 'html',
+      \  },
+      \}
