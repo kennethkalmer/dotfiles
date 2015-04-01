@@ -69,6 +69,8 @@ Plugin 'raichoo/haskell-vim'
 Plugin 'Shougo/vimproc'
 " Reactjs
 Plugin 'mxw/vim-jsx'
+" Copy as RTF
+Plugin 'zerowidth/vim-copy-as-rtf'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
