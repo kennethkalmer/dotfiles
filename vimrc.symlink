@@ -73,6 +73,8 @@ Plugin 'mxw/vim-jsx'
 Plugin 'zerowidth/vim-copy-as-rtf'
 " HTML LIKE A BOSS
 Plugin 'mattn/emmet-vim'
+" systemd config files
+Plugin 'Matt-Deacalion/vim-systemd-syntax'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
