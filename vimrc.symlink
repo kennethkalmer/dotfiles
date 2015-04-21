@@ -75,6 +75,8 @@ Plugin 'zerowidth/vim-copy-as-rtf'
 Plugin 'mattn/emmet-vim'
 " systemd config files
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
+" go
+Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
