@@ -21,7 +21,7 @@ bind C-a send-prefix      # Ensure that we can send Ctrl-A to other apps
 
 # Ooh pretty
 set -g default-terminal "screen-256color" # Set the default terminal mode to 256color mode
-source-file ~/.dotfiles/tmux/tmux-solarized-light
+source-file ~/.dotfiles/tmux/tmux-solarized-dark
 
 # Reload the file with Prefix r
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
@@ -101,19 +101,20 @@ set -g status-interval 500            # Update the status bar every few minutes
 
 ### Center of status bar
 set -g status-justify centre          # Center the window list
-set-window-option -g window-status-current-format "#[fg=brightblue, bg=white] #I ➤ #W "
+#set-window-option -g window-status-current-format "#[fg=brightblue, bg=white] #I ➤ #W "
+set-window-option -g window-status-current-format "#[fg=brightblue, bg=black] #I ➤ #W "
 
 ### Left of status bar
 set -g status-left-length 50
 #use this for solarized-light color
-set -g status-left  '#[fg=brightblue,bold]#[bg=white] #12H#[fg=brightblue]  ●  #[fg=brightblue,bold]#S:#I:#P#[default]#[fg=brightblue,bold]#[bg=white]             '
+#set -g status-left  '#[fg=brightblue,bold]#[bg=white] #12H#[fg=brightblue]  ●  #[fg=brightblue,bold]#S:#I:#P#[default]#[fg=brightblue,bold]#[bg=white]             '
 #use this for solarized-dark color
-#set -g status-left  '#[fg=brightblue,bold]#[bg=black] #12H#[fg=white]  ●  #[fg=brightblue,bold]#S:#I:#P#[default]#[fg=white,bold]#[bg=black]             '
+set -g status-left  '#[fg=brightblue,bold]#[bg=black] #12H#[fg=white]  ●  #[fg=brightblue,bold]#S:#I:#P#[default]#[fg=white,bold]#[bg=black]             '
 
 ### Right of status bar
 set -g status-right-length 50
 #use this for solarized-light color
-set -g status-right '#[fg=brightblue,bold]#[bg=white]#($HOME/.dotfiles/bin/battery -t)#[fg=brightblue]  ●  #[fg=brightblue,bold]#($HOME/.dotfiles/bin/weather)#[fg=brightblue]  ●  #[fg=brightblue,bold]%d %b, #[fg=brightblue]%H:%M#[default] '
+#set -g status-right '#[fg=brightblue,bold]#[bg=white]#($HOME/.dotfiles/bin/battery -t)#[fg=brightblue]  ●  #[fg=brightblue,bold]#($HOME/.dotfiles/bin/weather)#[fg=brightblue]  ●  #[fg=brightblue,bold]%d %b, #[fg=brightblue]%H:%M#[default] '
 #use this for solarized-dark color
-#set -g status-right '#[fg=brightblue,bold]#($HOME/.dotfiles/bin/battery -t)#[fg=white]  ●  #[fg=brightblue,bold]#($HOME/.dotfiles/bin/weather)#[fg=white]  ●  #[fg=brightblue,bold]%d %b, #[fg=brightblue]%H:%M#[default] '
+set -g status-right '#[fg=brightblue,bold]#($HOME/.dotfiles/bin/battery -t)#[fg=white]  ●  #[fg=brightblue,bold]#($HOME/.dotfiles/bin/weather)#[fg=white]  ●  #[fg=brightblue,bold]%d %b, #[fg=brightblue]%H:%M#[default] '
 
