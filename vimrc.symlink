@@ -77,6 +77,8 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 " go
 Plugin 'fatih/vim-go'
+" jade templates
+Plugin 'digitaltoad/vim-jade'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -89,7 +91,7 @@ filetype plugin indent on    " required
 " Make our leader a space key? hmmm
 let mapleader=" "
 " Set local tags file for increased speed
-set tags='./tags'
+set tags=./tags;
 let g:easytags_dynamic_files=2
 " Do not automatically update highlights (slows things down)
 let g:easytags_auto_highlight=0
