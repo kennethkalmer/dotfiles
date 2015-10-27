@@ -18,21 +18,32 @@
      ;; --------------------------------------------------------
      auto-completion
      better-defaults
-     (git :variables
-          git-gutter-use-fringe t)
+     version-control
+     git
      markdown
      org
      syntax-checking
      ruby
+     ruby-on-rails
      javascript
      html
      shell
+     dockerfile
+     go
+     lua
+     java
      )
    ;; List of additional packages that will be installed wihout being
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages then consider to create a layer, you can also put the
    ;; configuration in `dotspacemacs/config'.
-   dotspacemacs-additional-packages '(editorconfig)
+   dotspacemacs-additional-packages
+   '(
+     editorconfig
+     systemd
+     ember-mode
+     groovy-mode
+     )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
@@ -149,6 +160,9 @@ before layers configuration."
    (setq-default ruby-enable-ruby-on-rails-support t)
    ;; cucumber
    (setq feature-cucumber-command "/usr/bin/env ./bin/rake cucumber CUCUMBER_OPTS=\"{options}\" FEATURE=\"{feature}\"")
+   ;; eclim
+   (setq eclim-eclipse-dirs "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse"
+         eclim-executable "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse/eclim")
   )
 
 (defun dotspacemacs/config ()
