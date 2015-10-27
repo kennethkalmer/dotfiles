@@ -27,10 +27,7 @@ source-file ~/.dotfiles/tmux/tmux-solarized-dark
 bind r source-file ~/.tmux.conf \; display "Reloaded!"
 
 # Mouse support
-setw -g mode-mouse on
-set -g mouse-select-pane on
-set -g mouse-resize-pane on
-set -g mouse-select-window on
+setw -g mouse on
 
 # Enable vi keys, duhh
 setw -g mode-keys vi
