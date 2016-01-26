@@ -31,7 +31,8 @@
      dockerfile
      go
      lua
-     java
+     yaml
+     elixir
      )
    ;; List of additional packages that will be installed wihout being
    ;; wrapped in a layer. If you need some configuration for these
@@ -153,16 +154,13 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
-  
+
    ;; rbenv
    (setq-default ruby-version-manager 'rbenv)
    ;; rails
    (setq-default ruby-enable-ruby-on-rails-support t)
    ;; cucumber
    (setq feature-cucumber-command "/usr/bin/env ./bin/rake cucumber CUCUMBER_OPTS=\"{options}\" FEATURE=\"{feature}\"")
-   ;; eclim
-   (setq eclim-eclipse-dirs "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse"
-         eclim-executable "/opt/homebrew-cask/Caskroom/eclipse-java/4.5.1/Eclipse.app/Contents/Eclipse/eclim")
   )
 
 (defun dotspacemacs/config ()
