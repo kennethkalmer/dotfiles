@@ -18,6 +18,7 @@
      ;; --------------------------------------------------------
      auto-completion
      better-defaults
+     clojure
      dockerfile
      elixir
      git
