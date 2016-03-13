@@ -87,7 +87,7 @@ before layers configuration."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Fira Code Retina"
                                :size 13
                                :weight normal
                                :width normal
@@ -160,9 +160,11 @@ before layers configuration."
    (setq-default ruby-enable-ruby-on-rails-support t)
    ;; cucumber
    (setq feature-cucumber-command "/usr/bin/env ./bin/rake cucumber CUCUMBER_OPTS=\"{options}\" FEATURE=\"{feature}\"")
+   ;; FiraCode and other glyphy fonts
+   (mac-auto-operator-composition-mode)
   )
 
-(defun dotspacemacs/config ()
+(defun dotspacemacs/user-config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
