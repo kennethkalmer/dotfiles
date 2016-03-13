@@ -77,8 +77,6 @@ Plugin 'mattn/emmet-vim'
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
 " go
 Plugin 'fatih/vim-go'
-" jade templates
-Plugin 'digitaltoad/vim-jade'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
