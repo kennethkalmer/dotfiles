@@ -63,10 +63,6 @@ Plugin 'godlygeek/tabular'
 Plugin 'mustache/vim-mustache-handlebars'
 " Emblem
 Plugin 'heartsentwined/vim-emblem'
-" Haskell
-Plugin 'bflyblue/ghcmod-vim'
-Plugin 'raichoo/haskell-vim'
-Plugin 'Shougo/vimproc'
 " Reactjs
 Plugin 'mxw/vim-jsx'
 " Copy as RTF
