@@ -1,3 +1,7 @@
 # Vim
 *.swp
 *.sw
+credentials.clj
+credentials.clj.gpg
+repl-history
+lein.symlink/self-installs

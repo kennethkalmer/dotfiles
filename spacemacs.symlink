@@ -47,6 +47,7 @@
      systemd
      ember-mode
      url-shortener
+     kibit-helper
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
    dotspacemacs-excluded-packages '()
@@ -142,7 +143,7 @@ before layers configuration."
    ;; point when it reaches the top or bottom of the screen.
    dotspacemacs-smooth-scrolling t
    ;; If non-nil smartparens-strict-mode will be enabled in programming modes.
-   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smartparens-strict-mode t
    ;; If non nil advises quit functions to keep server open when quitting.
    dotspacemacs-persistent-server nil
    ;; List of search tool executable names. Spacemacs uses the first installed
@@ -163,12 +164,28 @@ before layers configuration."
    (setq feature-cucumber-command "/usr/bin/env ./bin/rake cucumber CUCUMBER_OPTS=\"{options}\" FEATURE=\"{feature}\"")
    ;; FiraCode and other glyphy fonts
    (mac-auto-operator-composition-mode)
+
+   ;; cider
+   ;; (setq cider-refresh-before-fn "dev/stop"
+   ;;       cider-refresh-after-fn  "dev/start")
+
+   ;; autosave when loosing focus
+   (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
+
+   ;; figwheel-sidecar for cljs projects
+   (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
   )
 
 (defun dotspacemacs/user-config ()
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+
+  ;; The hotness
+  (setq clojure-enable-fancify-symbols t)
+
+  ;; Keep namespaces in the older form
+  (setq cljr-favor-prefix-notation nil)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
