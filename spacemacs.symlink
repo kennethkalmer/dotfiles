@@ -17,6 +17,7 @@
      ;; Uncomment a layer name and press C-c C-c to install it
      ;; --------------------------------------------------------
      auto-completion
+     ansible
      better-defaults
      clojure
      dockerfile
@@ -30,6 +31,7 @@
      lua
      markdown
      org
+     react
      ruby
      ruby-on-rails
      shell
@@ -47,7 +49,6 @@
      editorconfig
      systemd
      ember-mode
-     url-shortener
      kibit-helper
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
@@ -175,6 +176,9 @@ before layers configuration."
 
    ;; figwheel-sidecar for cljs projects
    (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+
+   ;; relative line numbers by default
+   (setq-default dotspacemacs-line-numbers 'relative)
   )
 
 (defun dotspacemacs/user-config ()
