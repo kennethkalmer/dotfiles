@@ -2,3 +2,6 @@
 *.swp
 *.swo
 tags
+
+# ternjs
+.tern-port
