@@ -14,3 +14,8 @@ if (( $+commands[brew] )) ; then
   # Append the gopath bin to our own PATH
   export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
 fi
+
+###
+## universal/gtags/spacemacs
+#
+export GTAGSLABEL=pygments
