@@ -1,3 +1,7 @@
+###
+## GO
+#
+
 if [[ -d ~/Code/go ]]; then
   # Add the GOPATH
   export GOPATH=~/Code/go
