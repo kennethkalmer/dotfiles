@@ -2,17 +2,16 @@
 ## GO
 #
 
+# homebrew go root
+if [[ -d /usr/local/opt/go ]]; then
+  export GOROOT=/usr/local/opt/go/libexec
+  export PATH=$GOROOT/bin:$PATH
+fi
+
 if [[ -d ~/Code/go ]]; then
   # Add the GOPATH
   export GOPATH=~/Code/go
-fi
-
-if (( $+commands[brew] )) ; then
-  # Add the GOROOT, used by macvim
-  export GOROOT=$(brew --prefix go)/libexec
-
-  # Append the gopath bin to our own PATH
-  export PATH=$PATH:$GOPATH/bin:$GOROOT/bin
+  export PATH=$GOPATH/bin:$PATH
 fi
 
 ###
