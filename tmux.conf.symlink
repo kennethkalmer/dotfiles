@@ -13,8 +13,8 @@ bind C-c run "tmux save-buffer - | reattach-to-user-namespace pbcopy"
 bind C-v run "tmux set-buffer \"$(reattach-to-user-namespace pbpaste)\"; tmux paste-buffer"
 
 # Some humane convenience
-set -g prefix C-a         # Setting the prefix from C-b to C-a
-unbind C-b                # Free the original Ctrl-b prefix keybinding
+# set -g prefix C-a         # Setting the prefix from C-b to C-a
+# unbind C-b                # Free the original Ctrl-b prefix keybinding
 set -s escape-time 1      # Setting the delay between prefix and command
 bind C-a send-prefix      # Ensure that we can send Ctrl-A to other apps
 #bind C-a last-window
@@ -93,7 +93,6 @@ if-shell '`echo $TMUX | grep -q tmate`' \
 
 # General status bar config
 set -g status-keys vi
-set -g status-utf8 on                 # Enable utf-8 for special chars
 set -g status-interval 500            # Update the status bar every few minutes
 
 ### Center of status bar
@@ -113,5 +112,5 @@ set -g status-right-length 50
 #use this for solarized-light color
 #set -g status-right '#[fg=brightblue,bold]#[bg=white]#($HOME/.dotfiles/bin/battery -t)#[fg=brightblue]  ●  #[fg=brightblue,bold]#($HOME/.dotfiles/bin/weather)#[fg=brightblue]  ●  #[fg=brightblue,bold]%d %b, #[fg=brightblue]%H:%M#[default] '
 #use this for solarized-dark color
-set -g status-right '#[fg=brightblue,bold]#($HOME/.dotfiles/bin/battery -t)#[fg=white]  ●  #[fg=brightblue,bold]#($HOME/.dotfiles/bin/weather)#[fg=white]  ●  #[fg=brightblue,bold]%d %b, #[fg=brightblue]%H:%M#[default] '
+set -g status-right '#[fg=brightblue,bold]#($HOME/.dotfiles/bin/battery -t)#[fg=white]'
 
