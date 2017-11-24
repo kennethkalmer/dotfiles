@@ -5,3 +5,9 @@ tags
 
 # ternjs
 .tern-port
+
+# tags of all shapes and sizes
+TAGS
+GPATH
+GRTAGS
+GTAGS
