@@ -348,7 +348,10 @@ you should place your code here."
   (add-hook 'focus-out-hook (lambda () (save-some-buffers t)))
 
   ;; figwheel-sidecar for cljs projects
-  (setq cider-cljs-lein-repl "(do (use 'figwheel-sidecar.repl-api) (start-figwheel!) (cljs-repl))")
+  (setq cider-cljs-lein-repl
+        "(do (require 'figwheel-sidecar.repl-api)
+         (figwheel-sidecar.repl-api/start-figwheel!)
+         (figwheel-sidecar.repl-api/cljs-repl))")
 
   ;; https://github.com/syl20bnr/spacemacs/blob/develop/doc/FAQ.org#why-is-spacemacs-hanging-on-startup
   (setq tramp-ssh-controlmaster-options
