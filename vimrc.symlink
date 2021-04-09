@@ -9,30 +9,22 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-" Important
-Plugin 'altercation/vim-colors-solarized'
 " Silver searcher in ctrl-p
 Plugin 'rking/ag.vim'
 " Ruby editing niceties (c-x c-o to show methods)
 Plugin 'vim-ruby/vim-ruby'
-" Rails navigation and much more (:A and :R, also try :Emodel name!)
-Plugin 'tpope/vim-rails'
 " Git wrapper for vim (try :Gblame)
 Plugin 'tpope/vim-fugitive'
 " Change surrounding chars (try cs\"' inside braces - remove the \ )
 Plugin 'tpope/vim-surround'
 " Helper to end control structures automatically (ruby, bash, VS, C/C++ etc)
 Plugin 'tpope/vim-endwise'
-" Run specs from vim
-Plugin 'thoughtbot/vim-rspec'
 " Autoclosing of quotes, parentheses, brackets etc
 Plugin 'Raimondi/delimitMate'
 " Fuzzy search of all files in directory
 Plugin 'kien/ctrlp.vim'
 " Begins tab completion with a single <tab> instead of c-x c-o
 Plugin 'ervandew/supertab'
-" CS syntax, indenting, compling etc
-Plugin 'kchmck/vim-coffee-script'
 " Easy multi line commenting (try <leader>ci )
 Plugin 'ddollar/nerdcommenter'
 " Preemptive syntax checking for multiple languages
@@ -41,38 +33,10 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 " Awesome status line
 Plugin 'Lokaltog/vim-powerline'
-Plugin 'stephenmckinney/vim-solarized-powerline'
 " Provides nerdtree toggle function (mapped to <leader>n)
 Plugin 'jistr/vim-nerdtree-tabs'
-" Sublime Text style multiple cursors (put cursor on a word, then hit C-n)
-Plugin 'terryma/vim-multiple-cursors'
 " Unobtrusiver highlighting of trailing whitespaces (:Trim)
 Plugin 'csexton/trailertrash.vim'
-" Dependency of xolox's vim plugins
-Plugin 'xolox/vim-misc'
-" Auto ctags update
-Plugin 'xolox/vim-easytags'
-" Browse ctags in a bar
-Plugin 'majutsushi/tagbar'
-" Show git diff marks in sidebar
-"http://stackoverflow.com/questions/15277241/changing-vim-gutter-color
-Plugin 'airblade/vim-gitgutter'
-" Align stuff
-Plugin 'godlygeek/tabular'
-" Handlebars & movember
-Plugin 'mustache/vim-mustache-handlebars'
-" Emblem
-Plugin 'heartsentwined/vim-emblem'
-" Reactjs
-Plugin 'mxw/vim-jsx'
-" Copy as RTF
-Plugin 'zerowidth/vim-copy-as-rtf'
-" HTML LIKE A BOSS
-Plugin 'mattn/emmet-vim'
-" systemd config files
-Plugin 'Matt-Deacalion/vim-systemd-syntax'
-" go
-Plugin 'fatih/vim-go'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -92,11 +56,6 @@ let g:easytags_auto_highlight=0
 " Update tags every 15 secs on inactivity
 let g:easytags_updatetime_min=15000
 
-" Fancy status line delimeters (block arrow thing)
-let g:Powerline_theme='long'
-"let g:Powerline_symbols = 'fancy'
-"let g:airline_powerline_fonts = 1
-
 " Set ctrl-p's maximum height
 let g:ctrlp_max_height = 25
 " Check syntax on buffer read
@@ -108,13 +67,6 @@ let delimitMate_expand_space = 1
 " Show hidden files in NERDTree
 let NERDTreeShowHidden=1
 let g:yankring_replace_n_pkey = '<C-;>'
-
-" tslime config
-"let g:rspec_command = 'call SendToTmux("zeus test {spec}\n")'
-"let g:rspec_runner = 'os_x_iterm'
-" CoVim config
-"let CoVim_default_name = 'simon'
-"let CoVim_default_port = '5555'
 
 " Add change in cursor when in vim in tmux
 if exists('$TMUX')
@@ -135,8 +87,6 @@ set encoding=utf8
 " Configure solarized
 syntax enable
 set background=dark
-colorscheme solarized
-let g:Powerline_colorscheme='solarized256_dark'
 
 " Line highlighting
 set cursorline
@@ -275,12 +225,3 @@ if has("autocmd")
   augroup END
 endif
 
-"""""""""""
-" Emmet.vim
-"""""""""""
-
-let g:user_emmet_settings = {
-      \  'hbs' : {
-      \    'extends' : 'html',
-      \  },
-      \}
