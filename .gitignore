@@ -6,3 +6,6 @@ credentials.clj.gpg
 repl-history
 lein.symlink/self-installs
 boot.symlink/cache
+
+# Host specific files
+zsh/local.zsh
