@@ -1,5 +1,5 @@
 if (( $+commands[brew] )); then
-  file=$(brew --prefix asdf)/asdf.sh
+  file=$(brew --prefix asdf)/libexec/asdf.sh
 
   if [[ -f ${file} ]]; then
     # load asdf
