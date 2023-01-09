@@ -41,7 +41,7 @@ This function should only modify configuration layer settings."
      clojure
      docker
      emacs-lisp
-     git
+     github
      helm
      html
      javascript
@@ -51,7 +51,7 @@ This function should only modify configuration layer settings."
      nginx
      osx
      react
-     ruby
+     (ruby :variables ruby-backend 'lsp)
      ruby-on-rails
      (shell :variables
             shell-default-height 30
@@ -628,7 +628,11 @@ This function is called at the very end of Spacemacs initialization."
  '(paradox-github-token t)
  '(ring-bell-function 'ignore)
  '(safe-local-variable-values
-   '((ruby-backend . lsp)
+   '((add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]node_modules" "[/\\\\]vendor/bundle")
+     (javascript-backend . tide)
+     (javascript-backend . tern)
+     (javascript-backend . lsp)
+     (ruby-backend . lsp)
      (eval add-hook 'clojure-mode-hook #'cider-mode)
      (cider-boot-parameters . "dev"))))
 (custom-set-faces
