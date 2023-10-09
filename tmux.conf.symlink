@@ -2,8 +2,8 @@
 # BASIC CONFIG
 ##############################################################################
 # System defaults & clipboard support
-set -g default-command /usr/local/bin/zsh
-set -g default-shell /usr/local/bin/zsh
+set -g default-command /opt/homebrew/bin/zsh
+set -g default-shell /opt/homebrew/bin/zsh
 set -g history-limit 50000
 set -g default-terminal screen-256color
 
@@ -69,23 +69,6 @@ bind h select-pane -L
 bind j select-pane -D
 bind k select-pane -U
 bind l select-pane -R
-
-# Smart pane switching with awareness of vim splits & terminal multiplexer (tmate/tmux)
-if-shell '`echo $TMUX | grep -q tmate`' \
-  "bind -n C-h run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-h) || tmate select-pane -L\"" \
-  "bind -n C-h run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-h) || tmux select-pane -L\""
-if-shell '`echo $TMUX | grep -q tmate`' \
-  "bind -n C-j run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-j) || tmate select-pane -D\"" \
-  "bind -n C-j run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-j) || tmux select-pane -D\""
-if-shell '`echo $TMUX | grep -q tmate`' \
-  "bind -n C-k run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-k) || tmate select-pane -U\"" \
-  "bind -n C-k run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-k) || tmux select-pane -U\""
-if-shell '`echo $TMUX | grep -q tmate`' \
-  "bind -n C-l run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys C-l) || tmate select-pane -R\"" \
-  "bind -n C-l run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys C-l) || tmux select-pane -R\""
-if-shell '`echo $TMUX | grep -q tmate`' \
-  "bind -n C-\\ run \"(tmate display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmate send-keys 'C-\\\\') || tmate select-pane -l\"" \
-  "bind -n C-\\ run \"(tmux display-message -p '#{pane_current_command}' | grep -iqE '(^|\\/)vim(diff)?$' && tmux send-keys 'C-\\\\') || tmux select-pane -l\""
 
 
 ##############################################################################
