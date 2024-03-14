@@ -5,7 +5,7 @@ task :install do
   sources = File.expand_path('../', __FILE__)
   matches = Dir["#{sources}/**/*.symlink"]
   matches.each do |source|
-    name = File.basename(source, ".symlink")
+    name = source.sub("#{sources}/", '').sub(/\.symlink$/, '')
     dest = File.expand_path("~/.#{name}")
 
     puts "Linking #{source} => #{dest}"
