@@ -36,7 +36,7 @@ export PATH=/usr/local/sbin:$PATH
 source $ZSH/oh-my-zsh.sh
 
 # Local bins
-export PATH=$HOME/bin:$PATH
+export PATH=$HOME/.local/bin:$HOME/bin:$PATH
 
 # Disable autocorrect on per-command basis
 alias fuu='rspec --format Fuubar'
