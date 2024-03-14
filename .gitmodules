@@ -1,3 +1,6 @@
 [submodule "vim.symlink/bundle/Vundle.vim"]
 	path = vim.symlink/bundle/Vundle.vim
 	url = https://github.com/gmarik/Vundle.vim.git
+[submodule "config/nvim.symlink"]
+	path = config/nvim.symlink
+	url = https://github.com/kennethkalmer/kickstarter.nvim
