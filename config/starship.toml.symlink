@@ -1,0 +1,5 @@
+# older node verions may need more time to load
+command_timeout = 1000
+
+[aws]
+disabled = true
