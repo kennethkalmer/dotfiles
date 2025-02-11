@@ -1,16 +1,11 @@
 if (( $+commands[brew] )); then
-  file=$(brew --prefix asdf)/libexec/asdf.sh
+  export PATH="${ASDF_DATA_DIR:-$HOME/.asdf}/shims:$PATH"
 
-  if [[ -f ${file} ]]; then
-    # load asdf
-    source $file
-
-    # append completions to fpath
-    fpath=(${ASDF_DIR}/completions $fpath)
-    # initialise completions with ZSH's compinit
-    autoload -Uz compinit
-    compinit
-  fi
+  # append completions to fpath
+  fpath=(${ASDF_DIR}/completions $fpath)
+  # initialise completions with ZSH's compinit
+  autoload -Uz compinit
+  compinit
 
   java=$HOME/.asdf/plugins/java/set-java-home.zsh
   [[ -f ${java} ]] && source ${java}
