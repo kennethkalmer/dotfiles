@@ -1,0 +1,21 @@
+if status is-login; test -e /opt/homebrew/bin/brew; not contains /opt/homebrew/bin $PATH
+    set -gx --prepend PATH /opt/homebrew/bin
+end
+
+if status is-login; not contains ~/bin $fish_user_paths
+    set -gx --prepend PATH ~/bin
+end
+
+set -gx COLORTERM truecolor
+set -gx HOMEBREW_AUTO_UPDATE_SECS 86400
+set -g fish_key_bindings fish_vi_key_bindings
+set -g fish_bind_mode insert
+
+bind -M insert \cg forget
+
+if which asdf > /dev/null; status is-interactive; and source /opt/homebrew/share/fish/vendor_completions.d/asdf.fish; end
+if which direnv > /dev/null; direnv hook fish | source; end
+if which starship > /dev/null; status is-interactive; and starship init fish | source; end
+
+# Reapply PATH explicitly based on fish_user_paths
+# set -g PATH $fish_user_paths $PATH
