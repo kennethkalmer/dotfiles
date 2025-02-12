@@ -1,21 +1,26 @@
-#!/usr/bin/env rake
+# frozen_string_literal: true
 
-desc "Install all the symlinks"
+NON_DOT_DIRECTORIES = %w[bin].freeze
+
+desc 'Install all the symlinks'
 task :install do
-  sources = File.expand_path('../', __FILE__)
+  sources = File.expand_path(__dir__)
   matches = Dir["#{sources}/**/*.symlink"]
   matches.each do |source|
     name = source.sub("#{sources}/", '').sub(/\.symlink$/, '')
-    dest = File.expand_path("~/.#{name}")
+    root = name.split('/').first
+    dot  = NON_DOT_DIRECTORIES.include?(root) ? '' : '.'
+    dest = File.expand_path("~/#{dot}#{name}")
 
     puts "Linking #{source} => #{dest}"
 
     begin
-      File.symlink( source, dest )
+      FileUtils.mkdir_p(File.dirname(dest))
+      File.symlink(source, dest)
     rescue Errno::EEXIST
       puts "DESTINATION EXISTS, SKIPPING #{source}"
     end
   end
 end
 
-task :default => :install
+task default: :install
