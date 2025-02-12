@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+set -eou pipefail
+
+# Check if PI_HOLE_API_TOKEN is set
+if [ -z "${PI_HOLE_API_TOKEN:-}" ]; then
+  echo "PI_HOLE_API_TOKEN is not set. Exiting."
+  exit 1
+fi
+
+# Take optional argument as minutes
+if [ -n "${1:-}" ]; then
+  MINUTES="${1}"
+else
+  MINUTES=60
+fi
+
+echo "Disabling Pi-hole for ${MINUTES} minutes..."
+
+SECONDS=$((MINUTES * 60))
+
+curl -s "http://pi.hole/admin/api.php?disable=${SECONDS}&auth=${PI_HOLE_API_TOKEN}"
