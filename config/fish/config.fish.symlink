@@ -13,9 +13,24 @@ set -g fish_bind_mode insert
 
 bind -M insert \cg forget
 
-if which asdf > /dev/null; status is-interactive; and source /opt/homebrew/share/fish/vendor_completions.d/asdf.fish; end
+# ASDF configuration code
+if which asdf > /dev/null; status is-interactive; 
+    if test -z $ASDF_DATA_DIR
+        set _asdf_shims "$HOME/.asdf/shims"
+    else
+        set _asdf_shims "$ASDF_DATA_DIR/shims"
+    end
+  
+    # Do not use fish_add_path (added in Fish 3.2) because it
+    # potentially changes the order of items in PATH
+    if not contains $_asdf_shims $PATH
+        set -gx --prepend PATH $_asdf_shims
+    end
+    set --erase _asdf_shims
+end
+
 if which direnv > /dev/null; direnv hook fish | source; end
 if which starship > /dev/null; status is-interactive; and starship init fish | source; end
 
 # Reapply PATH explicitly based on fish_user_paths
-# set -g PATH $fish_user_paths $PATH
+set -g PATH $fish_user_paths $PATH
