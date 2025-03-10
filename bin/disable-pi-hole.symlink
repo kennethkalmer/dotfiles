@@ -1,22 +1,43 @@
-#!/usr/bin/env bash
+#!/usr/bin/env bb
 
-set -eou pipefail
+(require '[babashka.cli :as cli]
+         '[babashka.http-client :as http]
+         '[cheshire.core :as json])
 
-# Check if PI_HOLE_API_TOKEN is set
-if [ -z "${PI_HOLE_API_TOKEN:-}" ]; then
-  echo "PI_HOLE_API_TOKEN is not set. Exiting."
-  exit 1
-fi
+(def cli-options {:minutes {:default 5 :coerce :long}})
 
-# Take optional argument as minutes
-if [ -n "${1:-}" ]; then
-  MINUTES="${1}"
-else
-  MINUTES=60
-fi
+(defn tap [x]
+  (prn x)
+  x)
 
-echo "Disabling Pi-hole for ${MINUTES} minutes..."
+(defn get-password []
+  (let [password (System/getenv "PI_HOLE_API_TOKEN")]
 
-SECONDS=$((MINUTES * 60))
+    (if (nil? password)
+      (throw (ex-info "PI_HOLE_API_TOKEN is not set" {}))
+      password)))
 
-curl -s "http://pi.hole/admin/api.php?disable=${SECONDS}&auth=${PI_HOLE_API_TOKEN}"
+(defn get-sid [password]
+  (-> (http/post "http://pi.hole/api/auth"
+                 {:headers {"Content-Type" "application/json"}
+                  :body (json/generate-string {:password password})})
+      :body
+      (json/parse-string true)
+      (get-in [:session :sid])))
+
+(defn disable-pi-hole [sid minutes]
+  (let [url "http://pi.hole/api/dns/blocking"
+        body (json/generate-string {:blocking false
+                                    :timer (* minutes 60)
+                                    :sid sid})
+        headers {"Content-Type" "application/json"}]
+
+    (http/post url {:headers headers :body body})))
+
+(let [opts (cli/parse-opts *command-line-args* {:spec cli-options})
+      password (get-password)
+      sid (get-sid password)
+      minutes (:minutes opts)]
+
+  (prn (str "Disabling Pi-hole for " minutes " minutes..."))
+  (disable-pi-hole sid (:minutes opts)))
