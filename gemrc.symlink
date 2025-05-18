@@ -1,0 +1,2 @@
+install: --no-documentation
+update: --no-documentation
