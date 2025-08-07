@@ -1,5 +1,13 @@
+# Apple Silicon Homebrew
 if status is-login; test -e /opt/homebrew/bin/brew; not contains /opt/homebrew/bin $PATH
+    set -gx --prepend PATH /opt/homebrew/sbin
     set -gx --prepend PATH /opt/homebrew/bin
+end
+
+# Intel Homebrew
+if status is-login; test -e /usr/local/bin/brew; not contains /usr/local/bin $PATH
+    set -gx --prepend PATH /usr/local/sbin
+    set -gx --prepend PATH /usr/local/bin
 end
 
 if status is-login; not contains ~/bin $fish_user_paths
